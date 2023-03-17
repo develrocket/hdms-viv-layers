@@ -10,6 +10,16 @@ uniform highp SAMPLER_TYPE volume2;
 uniform highp SAMPLER_TYPE volume3;
 uniform highp SAMPLER_TYPE volume4;
 uniform highp SAMPLER_TYPE volume5;
+uniform highp SAMPLER_TYPE volume6;
+uniform highp SAMPLER_TYPE volume7;
+uniform highp SAMPLER_TYPE volume8;
+uniform highp SAMPLER_TYPE volume9;
+uniform highp SAMPLER_TYPE volume10;
+uniform highp SAMPLER_TYPE volume11;
+uniform highp SAMPLER_TYPE volume12;
+uniform highp SAMPLER_TYPE volume13;
+uniform highp SAMPLER_TYPE volume14;
+uniform highp SAMPLER_TYPE volume15;
 
 uniform vec3 scaledDimensions;
 
@@ -19,7 +29,7 @@ uniform vec3 normals[NUM_PLANES];
 uniform float distances[NUM_PLANES];
 
 // color
-uniform vec3 colors[6];
+uniform vec3 colors[16];
 
 // slices
 uniform vec2 xSlice;
@@ -27,7 +37,7 @@ uniform vec2 ySlice;
 uniform vec2 zSlice;
 
 // range
-uniform vec2 contrastLimits[6];
+uniform vec2 contrastLimits[16];
 
 in vec3 vray_dir;
 flat in vec3 transformed_eye;
@@ -126,6 +136,36 @@ void main(void) {
 		float intensityValue5 = float(texture(volume5, p).r);
   		DECKGL_PROCESS_INTENSITY(intensityValue5, contrastLimits[5], 5);
 		intensityValue5 = canShow * intensityValue5;
+		float intensityValue6 = float(texture(volume6, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue6, contrastLimits[6], 6);
+		intensityValue6 = canShow * intensityValue6;
+		float intensityValue7 = float(texture(volume7, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue7, contrastLimits[7], 7);
+		intensityValue7 = canShow * intensityValue7;
+		float intensityValue8 = float(texture(volume8, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue8, contrastLimits[8], 8);
+		intensityValue8 = canShow * intensityValue8;
+		float intensityValue9 = float(texture(volume9, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue9, contrastLimits[9], 9);
+		intensityValue9 = canShow * intensityValue9;
+		float intensityValue10 = float(texture(volume10, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue10, contrastLimits[10], 10);
+		intensityValue10 = canShow * intensityValue10;
+		float intensityValue11 = float(texture(volume11, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue11, contrastLimits[11], 11);
+		intensityValue11 = canShow * intensityValue11;
+		float intensityValue12 = float(texture(volume12, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue12, contrastLimits[12], 12);
+		intensityValue12 = canShow * intensityValue12;
+		float intensityValue13 = float(texture(volume13, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue13, contrastLimits[13], 13);
+		intensityValue13 = canShow * intensityValue13;
+		float intensityValue14 = float(texture(volume14, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue14, contrastLimits[14], 14);
+		intensityValue14 = canShow * intensityValue14;
+		float intensityValue15 = float(texture(volume15, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue15, contrastLimits[15], 15);
+		intensityValue15 = canShow * intensityValue15;
 
 		_RENDER
 

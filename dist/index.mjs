@@ -100,11 +100,21 @@ uniform SAMPLER_TYPE channel2;
 uniform SAMPLER_TYPE channel3;
 uniform SAMPLER_TYPE channel4;
 uniform SAMPLER_TYPE channel5;
+uniform SAMPLER_TYPE channel6;
+uniform SAMPLER_TYPE channel7;
+uniform SAMPLER_TYPE channel8;
+uniform SAMPLER_TYPE channel9;
+uniform SAMPLER_TYPE channel10;
+uniform SAMPLER_TYPE channel11;
+uniform SAMPLER_TYPE channel12;
+uniform SAMPLER_TYPE channel13;
+uniform SAMPLER_TYPE channel14;
+uniform SAMPLER_TYPE channel15;
 
 in vec2 vTexCoord;
 
 // range
-uniform vec2 contrastLimits[6];
+uniform vec2 contrastLimits[16];
 
 void main() {
 
@@ -120,8 +130,28 @@ void main() {
   DECKGL_PROCESS_INTENSITY(intensity4, contrastLimits[4], 4);
   float intensity5 = float(texture(channel5, vTexCoord).r);
   DECKGL_PROCESS_INTENSITY(intensity5, contrastLimits[5], 5);
+  float intensity6 = float(texture(channel6, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity6, contrastLimits[6], 6);
+  float intensity7 = float(texture(channel7, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity7, contrastLimits[7], 7);
+  float intensity8 = float(texture(channel8, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity8, contrastLimits[8], 8);
+  float intensity9 = float(texture(channel9, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity9, contrastLimits[9], 9);
+  float intensity10 = float(texture(channel10, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity10, contrastLimits[10], 10);
+  float intensity11 = float(texture(channel11, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity11, contrastLimits[11], 11);
+  float intensity12 = float(texture(channel12, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity12, contrastLimits[12], 12);
+  float intensity13 = float(texture(channel13, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity13, contrastLimits[13], 13);
+  float intensity14 = float(texture(channel14, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity14, contrastLimits[14], 14);
+  float intensity15 = float(texture(channel15, vTexCoord).r);
+  DECKGL_PROCESS_INTENSITY(intensity15, contrastLimits[15], 15);
 
-  DECKGL_MUTATE_COLOR(gl_FragColor, intensity0, intensity1, intensity2, intensity3, intensity4, intensity5, vTexCoord);
+  DECKGL_MUTATE_COLOR(gl_FragColor, intensity0, intensity1, intensity2, intensity3, intensity4, intensity5, intensity6, intensity7, intensity8, intensity9, intensity10, intensity11, intensity12, intensity13, intensity14, intensity15, vTexCoord);
 
 
   geometry.uv = vTexCoord;
@@ -257,7 +287,7 @@ const XRLayer = class extends Layer {
       positions: new Float64Array(12)
     });
     const programManager = ProgramManager.getDefaultProgramManager(gl);
-    const mutateStr = "fs:DECKGL_MUTATE_COLOR(inout vec4 rgba, float intensity0, float intensity1, float intensity2, float intensity3, float intensity4, float intensity5, vec2 vTexCoord)";
+    const mutateStr = "fs:DECKGL_MUTATE_COLOR(inout vec4 rgba, float intensity0, float intensity1, float intensity2, float intensity3, float intensity4, float intensity5, float intensity6, float intensity7, float intensity8, float intensity9, float intensity10, float intensity11, float intensity12, float intensity13, float intensity14, float intensity15, vec2 vTexCoord)";
     const processStr = `fs:DECKGL_PROCESS_INTENSITY(inout float intensity, vec2 contrastLimits, int channelIndex)`;
     if (!programManager._hookFunctions.includes(mutateStr)) {
       programManager.addShaderHook(mutateStr);
@@ -1066,6 +1096,16 @@ uniform highp SAMPLER_TYPE volume2;
 uniform highp SAMPLER_TYPE volume3;
 uniform highp SAMPLER_TYPE volume4;
 uniform highp SAMPLER_TYPE volume5;
+uniform highp SAMPLER_TYPE volume6;
+uniform highp SAMPLER_TYPE volume7;
+uniform highp SAMPLER_TYPE volume8;
+uniform highp SAMPLER_TYPE volume9;
+uniform highp SAMPLER_TYPE volume10;
+uniform highp SAMPLER_TYPE volume11;
+uniform highp SAMPLER_TYPE volume12;
+uniform highp SAMPLER_TYPE volume13;
+uniform highp SAMPLER_TYPE volume14;
+uniform highp SAMPLER_TYPE volume15;
 
 uniform vec3 scaledDimensions;
 
@@ -1075,7 +1115,7 @@ uniform vec3 normals[NUM_PLANES];
 uniform float distances[NUM_PLANES];
 
 // color
-uniform vec3 colors[6];
+uniform vec3 colors[16];
 
 // slices
 uniform vec2 xSlice;
@@ -1083,7 +1123,7 @@ uniform vec2 ySlice;
 uniform vec2 zSlice;
 
 // range
-uniform vec2 contrastLimits[6];
+uniform vec2 contrastLimits[16];
 
 in vec3 vray_dir;
 flat in vec3 transformed_eye;
@@ -1182,6 +1222,36 @@ void main(void) {
 		float intensityValue5 = float(texture(volume5, p).r);
   		DECKGL_PROCESS_INTENSITY(intensityValue5, contrastLimits[5], 5);
 		intensityValue5 = canShow * intensityValue5;
+		float intensityValue6 = float(texture(volume6, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue6, contrastLimits[6], 6);
+		intensityValue6 = canShow * intensityValue6;
+		float intensityValue7 = float(texture(volume7, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue7, contrastLimits[7], 7);
+		intensityValue7 = canShow * intensityValue7;
+		float intensityValue8 = float(texture(volume8, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue8, contrastLimits[8], 8);
+		intensityValue8 = canShow * intensityValue8;
+		float intensityValue9 = float(texture(volume9, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue9, contrastLimits[9], 9);
+		intensityValue9 = canShow * intensityValue9;
+		float intensityValue10 = float(texture(volume10, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue10, contrastLimits[10], 10);
+		intensityValue10 = canShow * intensityValue10;
+		float intensityValue11 = float(texture(volume11, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue11, contrastLimits[11], 11);
+		intensityValue11 = canShow * intensityValue11;
+		float intensityValue12 = float(texture(volume12, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue12, contrastLimits[12], 12);
+		intensityValue12 = canShow * intensityValue12;
+		float intensityValue13 = float(texture(volume13, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue13, contrastLimits[13], 13);
+		intensityValue13 = canShow * intensityValue13;
+		float intensityValue14 = float(texture(volume14, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue14, contrastLimits[14], 14);
+		intensityValue14 = canShow * intensityValue14;
+		float intensityValue15 = float(texture(volume15, p).r);
+  		DECKGL_PROCESS_INTENSITY(intensityValue15, contrastLimits[15], 15);
+		intensityValue15 = canShow * intensityValue15;
 
 		_RENDER
 
